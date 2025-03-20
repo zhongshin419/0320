@@ -1,62 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript作業</title>
+    <title>Javascript 作業</title>
     <style>
-       div#myId {
-        width: 100px;
-        background-color: sandybrown;
-        padding: 10px;
-        margin: 0 auto;
-        margin-top: 20px;
-       }
-       table , tr, td {
-        width: 100%;
-        border-collapse: collapse;
-       }
-       table {
-        text-align: center;
-        margin: 0 auto;
+        div#myId {
+            width: fit-content;
+            background-color: sandybrown;
+            padding: 10px;
+            margin: 20px auto;
         }
+
+        table,
+        tr,
+        td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        table {
+            text-align: center;
+            margin: 0 auto;
+        }
+
         td {
             padding: 10px;
             text-align: center;
+        }
+
+        a {
+            color: rgb(225, 30, 183);
+            background-color: rgb(162, 244, 154);
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid rgb(234, 187, 93);
+            margin: 5px;
+            display: inline-block;
+        }
+
+        a:link {
+            color: red;
         }
     </style>
     <script>
         function myFunction() {
             var n = document.getElementById('numberInput').value;
-            // alert("輸入的數值是:" = n);
+            
+            // 檢查輸入是否為有效數字
+            if (n === "" || isNaN(n) || n <= 0) {
+                alert("請輸入大於 0 的有效數字");
+                return;
+            }
 
-            var str= "<table>";
+            alert("輸入的數值是: " + n);
+            var str = "<table border='1'>";
 
             for (var i = 1; i <= n; i++) {
                 str += "<tr>";
-                for (let j = 1; j <= n; j++) {
-                    str +='<td> ${i} * ${j} = ${i*j}</td>';
+                for (var j = 1; j <= n; j++) {
+                    str += `<td>${i} * ${j} = ${i * j}</td>`;
                 }
                 str += "</tr>";
             }
             str += "</table>";
 
-            Document .getElementById('myId').innerHTML = str;
+            document.getElementById('myId').innerHTML = str;
         }
     </script>
 </head>
 
 <body>
-    <a href="index.html">首頁</a>
-    <a href="about.html">自我介紹</a>
-    <a href="research.html">研究</a>
-    <a href="homework.html">作業</a>
-    <h1>N*N 乘法表</h1>
-    <label for="numberInput">請輸入數字:</label>
-    <input type="number" id="numberInput" placeholder="請輸入數字"/>
-    <input type="button" value="好了" title="OK" onclick="myFunction()" />
-    <div id="myId"></div>
+    <center>
+        <a href="index.html">首頁</a>
+        <a href="about.html">自我介紹</a>
+        <a href="research.html">研究</a>
+        <a href="homework.html">作業</a>
+        <h1>N × N 乘法表</h1>
+        <label for="numberInput">請輸入數字:</label>
+        <input type="number" id="numberInput" placeholder="請輸入數字" min="1" />
+        <input type="button" value="生成表格" title="OK" onclick="myFunction()" />
+        <div id="myId"></div>
+    </center>
 </body>
 
 </html>
